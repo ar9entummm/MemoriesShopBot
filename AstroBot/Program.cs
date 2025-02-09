@@ -13,7 +13,7 @@ using Discord.WebSocket;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using Discord.Interactions;
-using dotenv.net;
+using Config;
 using Microsoft.VisualBasic;
 
 namespace AstroBot 
@@ -28,11 +28,11 @@ namespace AstroBot
 
         // Token for bot authentication
         // Токен для аутентификации бота
-        public static string token = getToken();
+        public static string token = BotConfig.getToken();
 
         // Command prefix
         // Префикс команд
-        public static string prefix = ">";
+        public static string prefix = BotConfig.prefix;
         
         // Command and interaction services
         // Сервисы команд и взаимодействий
@@ -182,17 +182,6 @@ namespace AstroBot
             Console.WriteLine(arg.ToString());
             return Task.CompletedTask;
         }
-
-        private static string getToken()
-        {
-            // Loading and retrieving variables from an .env file
-            // Загрузка и получение переменных из .env файла
-            DotEnv.Load();
-            var envVars = DotEnv.Read();
-            
-            // Token return
-            // Возврат токена
-            return envVars["TOKEN"];
-        }
+        
     }
 }
