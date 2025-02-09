@@ -6,16 +6,16 @@ namespace Config
     {
         // Bot prefix
         // Префикс бота
-        public static readonly string prefix = ">";
-        
+        public const string prefix = ">";  // Используем const, так как значение не меняется
+
         // Developer information
         // Информация о разработчике
-        public static readonly string developerTag = "ar9entum";
-        public static readonly Int64 developerId = 922814470210850846;
+        public const string developerTag = "ar9entum";
+        public const Int64 developerId = 922814470210850846;
         
         // Array with Discord user IDs that have access to various privileged features of the bot
         // Массив с ID пользователей Discord, имеющих доступ к различным привилегированным функциям бота
-        public static Int64[] botAllowedUsers = [developerId, 785860773850120212];
+        public static Int64[] botAllowedUsers = new Int64[] { developerId, 785860773850120212 };
 
         // Function for obtaining a token
         // Функция для получения токена
@@ -28,7 +28,14 @@ namespace Config
             
             // Token return
             // Возврат токена
-            return envVars["TOKEN"];
+            if (envVars.ContainsKey("TOKEN"))
+            {
+                return envVars["TOKEN"];
+            }
+            else
+            {
+                throw new Exception("TOKEN is not set in the .env file.");
+            }
         }
     }
 }
