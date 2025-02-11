@@ -73,7 +73,7 @@ namespace AstroBot
             client.MessageReceived += HandleCommandAsync;
             client.InteractionCreated += HandleInteractionAsync;
             client.ModalSubmitted += HandleModalSubmitted;
-            client.Ready += ClientReady;
+            client.Ready += Client_Ready;
             
             // Loading command modules
             // Загрузка модулей команд
@@ -92,7 +92,7 @@ namespace AstroBot
         
         // Function to register slash commands on bot startup
         // Функция для регистрации слэш-команд при запуске бота
-        private async Task ClientReady() 
+        private async Task Client_Ready() 
         {
             await interactions.RegisterCommandsGloballyAsync();
         }
@@ -125,9 +125,11 @@ namespace AstroBot
                     Console.WriteLine(result.ErrorReason);
                 
                 // Sending an error message to the user if the command cannot be executed
+                // Uncomment the lines below if necessary to send an error message to the chat
                 // Отправка сообщения об ошибке пользователю, если команда не может быть выполнена
-                if (result.Error.Equals(CommandError.UnmetPrecondition))
-                    await message.Channel.SendMessageAsync(result.ErrorReason);
+                // Раскомментировать строки ниже если надо отправка сообщения об ошибке в чат 
+                // if (result.Error != CommandError.UnmetPrecondition)
+                //    await message.Channel.SendMessageAsync(result.ErrorReason);
             }
         }
         
