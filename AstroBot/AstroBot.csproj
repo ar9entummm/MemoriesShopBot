@@ -19,9 +19,4 @@
       <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.1" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="commands\" />
-      <Folder Include="utilities\" />
-    </ItemGroup>
-
 </Project>

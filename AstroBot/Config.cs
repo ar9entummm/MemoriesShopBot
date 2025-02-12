@@ -1,3 +1,4 @@
+using Discord;
 using dotenv.net;
 
 namespace Config
@@ -11,12 +12,20 @@ namespace Config
         // Developer information
         // Информация о разработчике
         public const string developerTag = "ar9entum";
-        public const Int64 developerId = 922814470210850846;
+        public const UInt64 developerId = 922814470210850846;
         
         // Array with Discord user IDs that have access to various privileged features of the bot
         // Массив с ID пользователей Discord, имеющих доступ к различным привилегированным функциям бота
-        public static Int64[] botAllowedUsers = new Int64[] { developerId, 785860773850120212 };
-
+        public static UInt64[] whiteListUsers = new UInt64[] { developerId, 785860773850120212 };
+        
+        // Shop name
+        // Имя магазина
+        public const string shopName = "Memories shop";
+        
+        // Main embeds color
+        // Основной цвет эмбедов
+        public static Color mainColor = 0xFF0000;
+        
         // Function for obtaining a token
         // Функция для получения токена
         public static string getToken()
